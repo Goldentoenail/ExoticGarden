@@ -111,7 +111,7 @@ public class PlantsListener implements Listener {
 	@EventHandler
 	public void onGenerate(ChunkPopulateEvent e) {
 		if (!cfg.getStringList("world-blacklist").contains(e.getWorld().getName())) {
-		    if (CSCoreLib.randomizer().nextInt(100) < cfg.getInt("chances.TREE")) {
+		    if (CSCoreLib.randomizer().nextInt(100) < cfg.getInt("chances.BUSH")) {
 		    	Berry berry = ExoticGarden.berries.get(CSCoreLib.randomizer().nextInt(ExoticGarden.berries.size()));
 		    	if (berry.getType().equals(PlantType.ORE_PLANT)) return;
 		    	int x, z, y;
@@ -168,7 +168,7 @@ public class PlantsListener implements Listener {
 					}
 				}
 		    }
-		    else if (CSCoreLib.randomizer().nextInt(100) < cfg.getInt("chances.BUSH")) {
+		    else if (CSCoreLib.randomizer().nextInt(100) < cfg.getInt("chances.TREE")) {
 				Tree tree = ExoticGarden.trees.get(CSCoreLib.randomizer().nextInt(ExoticGarden.trees.size()));
 				int x, z, y;
 				x = e.getChunk().getX() * 16 + CSCoreLib.randomizer().nextInt(16);
@@ -261,7 +261,6 @@ public class PlantsListener implements Listener {
 	}
     
 	public void dropFruitFromTree(Block block) {
-		fruitDropped = false;
 		for (int x = -1; x < 2; x++) {
 			for (int y = -1; y < 2; y++) {
 				for (int z = -1; z < 2; z++) { //inspect a cube at the reference
